@@ -16,12 +16,9 @@ set(BUILD_FOLDER "${CMAKE_SOURCE_DIR}/build/binaries")
 
 project ("graph-maker")
 
-#add_compile_definitions(-DSFML_STATIC)
-
-#set(SFML_STATIC_LIBRARIES TRUE)
-set(SFML_DIR "${CMAKE_SOURCE_DIR}/thirdparty/SFML/cmake")
+set(SFML_BUILD_AUDIO FALSE)
+set(SFML_BUILD_NETWORK FALSE)
 
 add_subdirectory("thirdparty/SFML")
 add_subdirectory("graph-tool")
-
 
