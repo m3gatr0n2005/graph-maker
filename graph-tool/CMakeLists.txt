@@ -31,7 +31,10 @@ set_target_properties(graph-tool
 	RUNTIME_OUTPUT_DIRECTORY "${BUILD_FOLDER}/graph-tool"
 )
 
-target_include_directories(graph-tool PRIVATE "${CMAKE_SOURCE_DIR}/thirdparty/SFML/include")
+target_include_directories(graph-tool PRIVATE 
+	"${CMAKE_SOURCE_DIR}/thirdparty/SFML/include"
+	"${CMAKE_SOURCE_DIR}/graph-tool"
+)
 
 target_link_libraries(graph-tool PRIVATE sfml-graphics sfml-window sfml-system)
 
@@ -51,3 +54,4 @@ add_custom_command(TARGET graph-tool POST_BUILD
   COMMAND "${CMAKE_COMMAND}" -E copy 
      "$<TARGET_FILE:sfml-system>"
      "${BUILD_FOLDER}/graph-tool/$<CONFIGURATION>/$<TARGET_FILE_NAME:sfml-system>" )
+

@@ -1,22 +1,18 @@
-#include <SFML/Window.hpp>
+#include "Core/application.h"
 
 
 int main()
 {
-    sf::Window window(sf::VideoMode(800, 600), "My window");
+    ApplicationDescription desc;
+    desc.name = "graph-tool";
+    desc.FPS = 60;
+    desc.windowWidth = 1600;
+    desc.windowHeight = 900;
+    desc.clearColor = { 215, 255, 255 };
 
-    // run the program as long as the window is open
-    while (window.isOpen())
-    {
-        // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-    }
+    Application* app = new Application(desc);;
+    app->run();
+    delete app;
 
-    return 0;
+    return EXIT_SUCCESS;
 }
